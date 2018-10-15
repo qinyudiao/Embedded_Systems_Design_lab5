@@ -92,7 +92,7 @@ struct Note moonlight_melody_mp[] = {
 		{G5, dottedhalf},{Gb5, quarter}
 };
 
-struct Note moonlight_melody_BG1[] = {
+struct Note moonlight_harmony_BG1[] = {
 		{Db4, whole},
 		{B3, whole},
 		{A3, half},{Gb3, half},
@@ -107,7 +107,7 @@ struct Note moonlight_melody_BG1[] = {
 		{C4, quarter},{B3, quarter},{Bb3, half}
 };
 
-struct Note moonlight_melody_BG2[] = {
+struct Note moonlight_harmony_BG2[] = {
 		{C3, whole},
 		{C3, whole},
 		{C3, whole},
@@ -122,10 +122,22 @@ struct Note moonlight_melody_BG2[] = {
 		{C3, whole},
 };
 
-struct Song song = {
-	196, moonlight_melody, Guitar, 132, moonlight_melody_mp, Guitar, 24
-	
+struct Note Silence[] = {
+		{R, whole}
 };
+
+struct Song song = {
+	80, moonlight_melody, Guitar, 132, moonlight_melody_mp, Guitar, 24
+};
+
+//struct Song song = {
+//	48, moonlight_melody, Guitar, 132, Silence, Guitar, 1
+//};
+
+//struct Song song = {
+//	48, moonlight_harmony_BG1, Guitar, 18, moonlight_harmony_BG2, Guitar, 12
+//};
+
 
 static const unsigned short *instruments[NUMBER_OF_INSTRUMENTS] = {Wave, Trumpet, Flute, Guitar, Oboe};
 static char *instrumentText[NUMBER_OF_INSTRUMENTS] = {"Wave", "Trumpet", "Flute", "Guitar", "Oboe"};
@@ -160,12 +172,12 @@ static void melody_handler(void) {
 	}
 	else if (song.melody[melodyNoteIndex].note == R) {	 // a Rest
 			// keeping the previous melody out value;
-				melodyLasts++;
+			melodyLasts++;
 	}
 	else {
 			melody_out = song.melody_instrument[melodyInstrumentIndex];
-	melodyInstrumentIndex = (melodyInstrumentIndex + 1) % TABLE_SIZE;
-	melodyLasts++;
+			melodyInstrumentIndex = (melodyInstrumentIndex + 1) % TABLE_SIZE;
+			melodyLasts++;
 	}
 			
 	uint16_t output = (melody_out + harmony_out) / 4;
@@ -197,14 +209,14 @@ static void harmony_handler(void) {
 	if (harmonyNoteIndex >= song.harmony_note_num) {  // done playing the song
 			harmony_out = 0;
 	}
-		else if (song.harmony[harmonyNoteIndex].note == R) {	 // a Rest
+	else if (song.harmony[harmonyNoteIndex].note == R) {	 // a Rest
 			// keeping the previous melody out value;
 				harmonyLasts++;
 	}
 	else {
-	harmony_out = song.harmony_instrument[harmonyInstrumentIndex];
-	harmonyInstrumentIndex = (harmonyInstrumentIndex + 1) % TABLE_SIZE;
-	harmonyLasts++;
+			harmony_out = song.harmony_instrument[harmonyInstrumentIndex];
+			harmonyInstrumentIndex = (harmonyInstrumentIndex + 1) % TABLE_SIZE;
+			harmonyLasts++;
 	}
 	
 	uint16_t output = (melody_out + harmony_out) / 4;
