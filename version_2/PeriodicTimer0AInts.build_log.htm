@@ -1,0 +1,56 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\EE445L\Lab5\version_2\PeriodicTimer0AInts.uvproj
+Project File Date:  09/19/2018
+
+<h2>Output:</h2>
+Rebuild target 'PeriodicTimer0AInts'
+assembling startup.s...
+compiling PLL.c...
+compiling DAC.c...
+compiling Switch.c...
+compiling Music.c...
+compiling ST7735.c...
+compiling main.c...
+compiling Timer.c...
+linking...
+Program Size: Code=6752 RO-data=2724 RW-data=3344 ZI-data=1136  
+".\PeriodicTimer0AInts.axf" - 0 Error(s), 0 Warning(s).
+Load "C:\\EE445L\\Lab5\\version_2\\PeriodicTimer0AInts.axf" 
+Connecting: Mode=JTAG, Speed=1000000Hz
+Erase Done.
+Programming Done.
+Verify OK.
+ngs, 1 error
+compiling main.c...
+main.c(33): error:  #5: cannot open source input file "../inc/tm4c123gh6pm.h": No such file or directory
+  #include "../inc/tm4c123gh6pm.h"
+main.c: 0 warnings, 1 error
+compiling Timer.c...
+".\PeriodicTimer0AInts.axf" - 3 Error(s), 0 Warning(s).
+Target not created
+b4, triplet},{Db5, triplet},{E5, triplet},{Ab4, triplet},{Db5, triplet},{E5, triplet},
+Music.c(86): error:  #20: identifier "dottedhalf" is undefined
+                {0, dottedhalf},{Ab5, dottedeighth},{Ab5, sixteenth},
+Music.c(86): error:  #20: identifier "dottedeighth" is undefined
+                {0, dottedhalf},{Ab5, dottedeighth},{Ab5, sixteenth},
+Music.c(128): error:  #146: too many initializer values
+        moonlight_melody_BG1, Guitar, 18, moonlight_melody_BG2, Guitar, 12
+Music.c: 0 warnings, 4 errors
+compiling ST7735.c...
+ST7735.c(94): error:  #5: cannot open source input file "../inc/tm4c123gh6pm.h": No such file or directory
+  #include "../inc/tm4c123gh6pm.h"
+ST7735.c: 0 warnings, 1 error
+compiling main.c...
+main.c(33): error:  #5: cannot open source input file "../inc/tm4c123gh6pm.h": No such file or directory
+  #include "../inc/tm4c123gh6pm.h"
+main.c: 0 warnings, 1 error
+compiling Timer.c...
+Timer.c(29): error:  #5: cannot open source input file "..//inc//tm4c123gh6pm.h": No such file or directory
+  #include "..//inc//tm4c123gh6pm.h"
+Timer.c: 0 warnings, 1 error
+".\PeriodicTimer0AInts.axf" - 10 Error(s), 0 Warning(s).
+Target not created
